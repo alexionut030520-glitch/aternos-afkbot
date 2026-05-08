@@ -1,14 +1,15 @@
-const http = require('http'); 
-const mineflayer = require('mineflayer');
-const CONFIG = require("./config.json");
+const express = require("express");
+const app = express();
 
-let connected = false;
-const actions = ['forward', 'back', 'left', 'right', 'jump'];
-const sleep = ms=> new Promise(resovle=> setTimeout(resovle, ms));
-const getRandom = array=> array[Math.floor(Math.random() * (array.length - 0)) + 0];
-const cLog = (msg, ...args) => {
-	if(CONFIG.logger[0]) {
-		console.log(msg, ...args);
+app.get("/", (req, res) => {
+  res.send("AFK Bot running");
+});
+
+const PORT = process.env.PORT || 3000;
+
+app.listen(PORT, "0.0.0.0", () => {
+  console.log(`Web server running on ${PORT}`);
+});
 	}
 };
 
